@@ -186,4 +186,167 @@ tarjetas[i].style.display="none";
 </script>
 
 </body>
-</html># MATWI
+</html># <!-- =========================
+     CARRUSEL DE IMÁGENES
+========================= -->
+<div class="slider">
+    <img id="foto"
+    src="https://upload.wikimedia.org/wikipedia/commons/5/56/Tornado_Elie_Manitoba_2007.jpg">
+</div>
+<style>
+.slider{
+    width:95%;
+    max-width:1000px;
+    margin:auto;
+    overflow:hidden;
+    border-radius:15px;
+    box-shadow:0 0 20px #00bfff;
+}
+.slider img{
+    width:100%;
+    height:450px;
+    object-fit:cover;
+}
+</style>
+<script>
+let imagenes=[
+"https://upload.wikimedia.org/wikipedia/commons/5/56/Tornado_Elie_Manitoba_2007.jpg",
+"https://upload.wikimedia.org/wikipedia/commons/4/4b/Supercell_thunderstorm.jpg",
+"https://upload.wikimedia.org/wikipedia/commons/f/f4/Tornado_near_Elie_Manitoba.jpg"
+];
+let numero=0;
+setInterval(function(){
+numero++;
+if(numero>=imagenes.length){
+numero=0;
+}
+document.getElementById("foto").src=imagenes[numero];
+},4000);
+</script>
+<!-- =========================
+     MAPA
+========================= -->
+<h2>🗺️ Mapa Mundial de Tornados</h2>
+<iframe
+src="https://www.google.com/maps/embed?pb=!1m18"
+width="100%"
+height="450"
+style="border:0;border-radius:15px;"
+loading="lazy">
+</iframe>
+<!-- =========================
+     EFECTO LLUVIA
+========================= -->
+<style>
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background-image:
+linear-gradient(
+transparent 70%,
+rgba(255,255,255,.15)
+);
+background-size:3px 30px;
+animation:lluvia .3s linear infinite;
+pointer-events:none;
+}
+@keyframes lluvia{
+from{
+transform:translateY(-30px);
+}
+to{
+transform:translateY(30px);
+}
+}
+</style>
+<!-- =========================
+     RAYOS
+========================= -->
+<style>
+@keyframes relampago{
+0%{opacity:0;}
+5%{opacity:.9;}
+10%{opacity:0;}
+100%{opacity:0;}
+}
+.flash{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:white;
+opacity:0;
+animation:relampago 8s infinite;
+pointer-events:none;
+}
+</style>
+<div class="flash"></div>
+<!-- =========================
+     BOTÓN MODO OSCURO
+========================= -->
+<button onclick="modo()" id="boton">
+🌙 Cambiar tema
+</button>
+<style>
+#boton{
+position:fixed;
+bottom:20px;
+right:20px;
+padding:15px;
+border:none;
+border-radius:30px;
+font-size:18px;
+cursor:pointer;
+background:#2196f3;
+color:white;
+}
+</style>
+<script>
+function modo(){
+document.body.classList.toggle("claro");
+}
+</script>
+<style>
+.claro{
+background:#f2f2f2;
+color:black;
+}
+.claro .tarjeta{
+background:white;
+color:black;
+}
+</style>
+<!-- =========================
+     CONTADOR
+========================= -->
+<h2 style="text-align:center;">
+🌪 Tornados registrados:
+<span id="contador">8</span>
+</h2>
+<!-- =========================
+     REPRODUCTOR DE SONIDO
+========================= -->
+<audio controls style="width:100%;margin-top:20px;">
+<source src="sonidos/trueno.mp3" type="audio/mpeg">
+</audio>
+<!-- =========================
+     BOTÓN SUBIR
+========================= -->
+<button onclick="window.scrollTo({top:0,behavior:'smooth'})"
+style="
+position:fixed;
+left:20px;
+bottom:20px;
+padding:15px;
+border:none;
+border-radius:50%;
+font-size:25px;
+cursor:pointer;
+">
+⬆
+</button>
